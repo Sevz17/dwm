@@ -98,7 +98,7 @@ static const Layout layouts[] = {
 
 // Commands
 static char dmenumon[2] = "0";
-static const char *termcmd[]  = { "kitty", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 static const char *dmenucmd[] = {
     "dmenu_run", "-m", dmenumon,
     "-fn", dmenufont,
@@ -180,7 +180,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask, XK_m, spawn, SHCMD("rofi -show") },
 
     // Terminal
-    { MODKEY, XK_Return, spawn, SHCMD("kitty") },
+    { MODKEY, XK_Return, spawn, SHCMD("alacritty") },
 
     // File explorer
     { MODKEY, XK_e, spawn, SHCMD("pcmanfm") },
