@@ -108,6 +108,7 @@ static const char *dmenucmd[] = {
 };
 
 #include <X11/XF86keysym.h>
+#include "mpdcontrol.c"
 static Key keys[] = {
 
     // ------------------ Windows ------------------
@@ -212,6 +213,11 @@ static Key keys[] = {
     // Brightness
     {0, XF86XK_MonBrightnessUp, spawn, SHCMD("brightnessctl set +10%")},
     {0, XF86XK_MonBrightnessDown, spawn, SHCMD("brightnessctl set 10%-")},
+
+    // Music
+    { MODKEY|ControlMask|ShiftMask, XK_j, mpdchange, {.i = -1} },
+	{ MODKEY|ControlMask|ShiftMask, XK_k, mpdchange, {.i = +1} },
+    { MODKEY|ControlMask|ShiftMask, XK_space, mpdcontrol, {0} },
 
 };
 
