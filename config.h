@@ -2,8 +2,6 @@
 
 // border pixel of windows
 static const unsigned int borderpx  = 1;
-// gaps between windows 
-static const unsigned int gappx = 0;
 // snap pixel 
 static const unsigned int snap = 32;
 // 0: sloppy systray follows selected monitor, >0: pin systray to monitor X 
@@ -136,10 +134,6 @@ static Key keys[] = {
     // Cycle layouts
     { MODKEY, XK_Tab, cyclelayout, {.i = +1 } },
     { MODKEY|ShiftMask, XK_Tab, cyclelayout,  {.i = -1 } },
-
-    // Increase - decrease gaps
-    { MODKEY, XK_g, setgaps, {.i = -1 } },
-    { MODKEY|ShiftMask, XK_g, setgaps, {.i = +1 } },
 
     // Focus next - prev monitor
     { MODKEY, XK_period, focusmon, {.i = +1 } },
