@@ -4,6 +4,7 @@ static const Block blocks[] = {
     { "  ", "checkupdates | wc -l",                 60,               0 },
     { "",    "volume",                               1,                0 },
     { "",    "date '+ %d/%m/%Y  %H:%M:%S'",       1,              0 },
+    { "  ",    "getxkbmap",                               1,                0 },
 };
 
 // Sets delimeter between status commands. NULL character ('\0') means no delimeter.
