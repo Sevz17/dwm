@@ -198,11 +198,13 @@ static Key keys[] = {
     // ----------------- Hardware ------------------
 
     // Volume
-    {ShiftMask|ControlMask, XK_j, spawn, SHCMD("pamixer --decrease 2")},
-    {ShiftMask|ControlMask, XK_k, spawn, SHCMD("pamixer --increase 2")},
-
-
-    {MODKEY|ControlMask, XK_space, spawn, SHCMD("pamixer --toggle-mute")},
+    {0, XF86XK_AudioLowerVolume, spawn, SHCMD("pamixer --decrease 2")},
+    {0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer --increase 2")},
+    {MODKEY, XK_minus, spawn, SHCMD("pamixer --decrease 2")},
+    {MODKEY, XK_plus, spawn, SHCMD("pamixer --increase 2")},
+    {MODKEY, XK_equal, spawn, SHCMD("pamixer --increase 2")},
+    {MODKEY|ShiftMask, XK_equal, spawn, SHCMD("pamixer --toggle-mute")},
+    {MODKEY|ShiftMask, XK_minus, spawn, SHCMD("pamixer --toggle-mute")},
 
     // Brightness
     {0, XF86XK_MonBrightnessUp, spawn, SHCMD("brightnessctl set +10%")},
@@ -213,6 +215,9 @@ static Key keys[] = {
 	{ MODKEY|ControlMask|ShiftMask, XK_k, mpdchange, {.i = +1} },
     { MODKEY|ControlMask|ShiftMask, XK_space, mpdcontrol, {0} },
 
+    // ----------------- Keyboard layout ------------------
+    // Change the xkbmap
+    {MODKEY, XK_space, spawn, SHCMD("changexkbmap") },
 };
 
 // click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin 
