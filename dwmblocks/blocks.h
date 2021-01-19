@@ -3,7 +3,7 @@ static const Block blocks[] = {
 	{"Mem:", "free --mega | awk '/^Mem/ { print $3\"M/\"$2\"M\" }'",	1,		0},
     { "  ", "checkupdates | wc -l",                 60,               0 },
     { "",    "volume",                               1,                0 },
-    { "",    "date '+ %d/%m/%Y  %H:%M:%S'",       1,              0 },
+    { "",    "date '+ %H:%M:%S  %d/%m/%Y'",       1,              0 },
     { "  ",    "getxkbmap",                               1,                0 },
 };
 
