@@ -30,6 +30,9 @@ static const char window_border[] = "#000000";
 static const char inactive[] = "#4c566a";
 static const char active[] = "#ffffff";
 
+static const char custom_bg[] = "#0f0f0f";
+static const char custom_focus[] = "#6000ff";
+
 static const char material_bg[] = "#0f101a";
 static const char material_focus[] = "#a151d3";
 
@@ -41,6 +44,9 @@ static const char nord_focus[] = "#81a1c1";
 
 static const char *colors[][3]      = {
     // fg        bg         border   
+    { inactive, custom_bg, window_border },
+    { active, custom_focus,  custom_focus  },
+
     { inactive, material_bg, window_border },
     { active, material_focus,  material_focus  },
 
