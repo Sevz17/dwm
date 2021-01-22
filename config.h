@@ -185,21 +185,39 @@ static Key keys[] = {
     // Window nav (rofi)
     { MODKEY|ShiftMask, XK_m, spawn, SHCMD("rofi -show") },
 
-    // Terminal
+    // Terminal emulators
     { MODKEY, XK_Return, spawn, SHCMD("alacritty") },
+    { MODKEY|ControlMask, XK_Return, spawn, SHCMD("kitty") },
 
-    // File explorer
+    // File explorers
     { MODKEY, XK_e, spawn, SHCMD("pcmanfm") },
+    { MODKEY|ShiftMask, XK_e, spawn, SHCMD("thunar") },
+    { MODKEY|ControlMask, XK_e, spawn, SHCMD("kitty -e ranger") },
 
-    // Browser
+    // Browsers
     { MODKEY, XK_b, spawn, SHCMD("microsoft-edge-dev") },
+    { MODKEY, XK_f, spawn, SHCMD("firefox") },
+    { MODKEY|ControlMask, XK_b, spawn, SHCMD("brave") },
 
     // Redshift
     { MODKEY, XK_r, spawn, SHCMD("redshift -O 2400") },
     { MODKEY|ShiftMask, XK_r, spawn, SHCMD("redshift -x") },
 
     // Screenshot
-    { MODKEY, XK_s, spawn, SHCMD("scrot") },
+    { MODKEY, XK_s, spawn, SHCMD("scrot -z '%Y-%m-%d-%H.%M.%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screenshots/'") },
+    { MODKEY|ShiftMask, XK_s, spawn, SHCMD("scre") },
+
+    // Music Players
+    { MODKEY, XK_p, spawn, SHCMD("spotify") },
+    { MODKEY|ShiftMask, XK_p, spawn, SHCMD("alacritty -e cmus") },
+
+    // Messengers
+    { MODKEY, XK_t, spawn, SHCMD("telegram-desktop") },
+
+    // Miscellaneous
+    { MODKEY, XK_d, spawn, SHCMD("droidcam") },
+    { MODKEY, XK_z, spawn, SHCMD("zoom") },
+
 
     // ----------------- Hardware ------------------
 
