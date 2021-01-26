@@ -61,7 +61,7 @@ static const char *colors[][3]      = {
 
 // -------------------------------- Workspaces ---------------------------------
 
-static const char *tags[] = { " ", "﬏ ", " ", " ", " ", " ", " ", " ", " ", " " };
+static const char *tags[] = { " ", "﬏ ", " ", " ", " ", " ", " ", " ", " ", " " };
 
 static const Rule rules[] = {
     /* xprop(1):
