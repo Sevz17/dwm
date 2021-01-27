@@ -185,6 +185,7 @@ static Key keys[] = {
 
     // dmenu
     { MODKEY|ShiftMask, XK_Return, spawn, {.v = dmenucmd } },
+    { MODKEY, XK_Menu, spawn, {.v = dmenucmd } },
 
     // rofi
     { MODKEY, XK_m, spawn, SHCMD("rofi -show drun") },
