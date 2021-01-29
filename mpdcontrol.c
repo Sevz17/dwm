@@ -42,6 +42,22 @@ void mpdchange(const Arg *direction){
     mpd_connection_free(conn);
 }
 
+void mpd_volume(const Arg *direction) {
+    struct mpd_connection * conn;
+
+    conn = get_conn();
+
+    if(conn == NULL){
+        return;
+    }
+
+    if (direction->i != 0) {
+        mpd_run_change_volume(conn, direction->i);
+    }
+
+    mpd_connection_free(conn);
+}
+
 char *get_regerror(int errcode, regex_t *compiled){
     size_t length = regerror(errcode, compiled, NULL, 0);
     char *buffer = malloc(length);
