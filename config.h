@@ -20,6 +20,7 @@ static const int showbar = 1;
 static const int topbar = 1;
 // heigh 
 static const int user_bh = 0; /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const unsigned int diff_volume = 2;      /* means the volume that MPD will increase or reduce, if 0 does nothing */
 
 // ---------------------------------- Fonts ------------------------------------
 
@@ -94,6 +95,7 @@ static const Layout layouts[] = {
 // -------------------------------- Keybindings --------------------------------
 
 #define MODKEY Mod4Mask
+#define ALTKEY Mod1Mask
 
 #define TAGKEYS(KEY,TAG) \
     { MODKEY,                       KEY,  view,       {.ui = 1 << TAG} }, \
@@ -242,10 +244,21 @@ static Key keys[] = {
     {0, XF86XK_MonBrightnessUp, spawn, SHCMD("brightnessctl set +10%")},
     {0, XF86XK_MonBrightnessDown, spawn, SHCMD("brightnessctl set 10%-")},
 
-    // Music
-    { MODKEY|ControlMask|ShiftMask, XK_j, mpdchange, {.i = -1} },
-	{ MODKEY|ControlMask|ShiftMask, XK_k, mpdchange, {.i = +1} },
-    { MODKEY|ControlMask|ShiftMask, XK_space, mpdcontrol, {0} },
+    // --------------------- MPD -------------------
+
+    // Previus or next song
+    { MODKEY|ALTKEY, XK_j, mpdchange, {.i = -1} },
+	{ MODKEY|ALTKEY, XK_k, mpdchange, {.i = +1} },
+
+    // Play or pause
+    { MODKEY|ALTKEY, XK_space, mpdcontrol, {0} },
+
+    // Volume
+    {ALTKEY, XF86XK_AudioLowerVolume, mpd_volume, {.i = -diff_volume } },
+    {ALTKEY, XF86XK_AudioRaiseVolume, mpd_volume, {.i = +diff_volume } },
+    {MODKEY|ALTKEY, XK_minus, mpd_volume, {.i = -diff_volume } },
+    {MODKEY|ALTKEY, XK_plus, mpd_volume, {.i = +diff_volume} },
+    {MODKEY|ALTKEY, XK_equal, mpd_volume, {.i = +diff_volume} },
 
     // ----------------- Keyboard layout ------------------
     // Change the xkbmap
