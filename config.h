@@ -262,7 +262,7 @@ static Key keys[] = {
 
     // ----------------- Keyboard layout ------------------
     // Change the xkbmap
-    {MODKEY, XK_space, spawn, SHCMD("changexkbmap") },
+    {MODKEY, XK_space, spawn, SHCMD("xkbmap --rotate") },
 };
 
 // click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin 
