@@ -1,63 +1,63 @@
 // -------------------------------- Appearance ---------------------------------
 
 // border pixel of windows
-static const unsigned int borderpx  = 2;
+static const unsigned int borderpx          = 2;
 // gaps between windows
-static const unsigned int gappx = 6;
+static const unsigned int gappx             = 6;
 // snap pixel 
-static const unsigned int snap = 32;
+static const unsigned int snap              = 32;
 // 0: sloppy systray follows selected monitor, >0: pin systray to monitor X 
-static const unsigned int systraypinning = 0;
+static const unsigned int systraypinning    = 0;
 // systray spacing 
-static const unsigned int systrayspacing = 2;
+static const unsigned int systrayspacing    = 2;
 // 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor
-static const int systraypinningfailfirst = 1;
+static const int systraypinningfailfirst    = 1;
 // 0 means no systray
-static const int showsystray = 1;
+static const int showsystray                = 1;
 // 0 means no bar 
-static const int showbar = 1;
+static const int showbar                    = 1;
 // 0 means bottom bar 
-static const int topbar = 1;
-// heigh 
-static const int user_bh = 0; /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const unsigned int diff_volume = 2;      /* means the volume that MPD will increase or reduce, if 0 does nothing */
-
+static const int topbar                     = 1;
+// 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height
+static const int user_bh                    = 0;
+// means the volume that MPD will increase or reduce, if 0 does nothing
+static const unsigned int diff_volume       = 2;
 // ---------------------------------- Fonts ------------------------------------
 
-static const char *fonts[] = { "UbuntuMono Nerd Font:size=14:weight=bold:antialias=true:autohint:true" };
-static const char dmenufont[] = "UbuntuMono Nerd Font:size=12:antialias=true:autohint=true";
+static const char *fonts[]    = { "UbuntuMono Nerd Font:size=14:weight=bold:antialias=true:autohint:true" };
+static const char dmenufont[] = { "UbuntuMono Nerd Font:size=12:antialias=true:autohint=true" };
 
 // ---------------------------------- Colors -----------------------------------
 
-static const char window_border[] = "#000000";
-static const char inactive[] = "#4c566a";
-static const char active[] = "#ffffff";
+static const char window_border[]       = "#000000";
+static const char inactive[]            = "#4c566a";
+static const char active[]              = "#ffffff";
 
-static const char custom_bg[] = "#0f0f0f";
-static const char custom_focus[] = "#6000ff";
+static const char custom_bg[]           = "#0f0f0f";
+static const char custom_focus[]        = "#6000ff";
 
-static const char material_bg[] = "#0f101a";
-static const char material_focus[] = "#a151d3";
+static const char material_bg[]         = "#0f101a";
+static const char material_focus[]      = "#a151d3";
 
-static const char onedark_bg[] = "#1e2127";
-static const char onedark_focus[] = "#E06C75";
+static const char onedark_bg[]          = "#1e2127";
+static const char onedark_focus[]       = "#E06C75";
 
-static const char nord_bg[] = "#2e3440";
-static const char nord_focus[] = "#81a1c1";
+static const char nord_bg[]             = "#2e3440";
+static const char nord_focus[]          = "#81a1c1";
 
-static const char *colors[][3]      = {
-    // fg        bg         border   
-    { inactive, custom_bg, window_border },
-    { active, custom_focus,  custom_focus  },
+static const char *colors[][3]          = {
+    // fg        bg               border
+    { inactive,  custom_bg,       window_border },
+    { active,    custom_focus,    custom_focus  },
 
-    { inactive, material_bg, window_border },
-    { active, material_focus,  material_focus  },
+    { inactive,  material_bg,     window_border },
+    { active,    material_focus,  material_focus  },
 
-    { inactive, onedark_bg, window_border },
-    { active, onedark_focus,  onedark_focus  },
+    { inactive,  onedark_bg,      window_border },
+    { active,    onedark_focus,   onedark_focus  },
     
-    { inactive, nord_bg, window_border },
-    { active, nord_focus,  nord_focus  },
+    { inactive,  nord_bg,         window_border },
+    { active,    nord_focus,      nord_focus  },
 };
 
 // -------------------------------- Workspaces ---------------------------------
@@ -77,9 +77,12 @@ static const Rule rules[] = {
 
 // ---------------------------------- Layouts ----------------------------------
 
-static const float mfact = 0.50;  // factor of master area size [0.05..0.95] 
-static const int nmaster = 1;     // number of clients in master area 
-static const int resizehints = 1; // 1 means respect size hints in tiled resizals 
+// factor of master area size [0.05..0.95]
+static const float mfact        = 0.50;
+// number of clients in master area
+static const int nmaster        = 1;
+// 1 means respect size hints in tiled resizals
+static const int resizehints    = 1;
 
 #include "layouts.c"
 static const Layout layouts[] = {
@@ -94,8 +97,13 @@ static const Layout layouts[] = {
 
 // -------------------------------- Keybindings --------------------------------
 
-#define MODKEY Mod4Mask
-#define ALTKEY Mod1Mask
+#define MODKEY      Mod4Mask
+#define ALTKEY      Mod1Mask
+#define LowerVolume XF86XK_AudioLowerVolume
+#define RaiseVolume XF86XK_AudioRaiseVolume
+#define AudioMute   XF86XK_AudioMute
+#define BrightUp    XF86XK_MonBrightnessUp
+#define BrightDown  XF86XK_MonBrightnessDown
 
 #define TAGKEYS(KEY,TAG) \
     { MODKEY,                       KEY,  view,       {.ui = 1 << TAG} }, \
@@ -107,9 +115,9 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 // Commands
-static char dmenumon[2] = "0";
-static const char *termcmd[]  = { "alacritty", NULL };
-static const char *dmenucmd[] = {
+static char dmenumon[2]         = "0";
+static const char *termcmd[]    = { "alacritty", NULL };
+static const char *dmenucmd[]   = {
     "dmenu_run", "-m", dmenumon,
     "-fn", dmenufont,
     NULL
@@ -122,54 +130,55 @@ static Key keys[] = {
     // ------------------ Windows ------------------
 
     // Switch between windows
-    { MODKEY, XK_j, focusstack, {.i = +1 } },
-    { MODKEY, XK_k, focusstack, {.i = -1 } },
+    { MODKEY,               XK_j,			focusstack,     {.i = +1 } },
+    { MODKEY,               XK_k,			focusstack,     {.i = -1 } },
 
     // Change window sizes
-    { MODKEY, XK_i, incnmaster, {.i = +1 } },
-    { MODKEY|ShiftMask, XK_i, incnmaster, {.i = -1 } },
-    { MODKEY|ShiftMask, XK_h, setmfact, {.f = -0.05} },
-    { MODKEY|ShiftMask, XK_l, setmfact, {.f = +0.05} },
+    { MODKEY,               XK_i,			incnmaster,     {.i = +1 } },
+    { MODKEY|ShiftMask,     XK_i,			incnmaster,     {.i = -1 } },
+    { MODKEY|ShiftMask,     XK_h,			setmfact,       {.f = -0.05} },
+    { MODKEY|ShiftMask,     XK_l,			setmfact,       {.f = +0.05} },
 
     // Change gaps
-    { MODKEY, XK_g, setgaps, {.i = +1 } },
-    { MODKEY|ShiftMask, XK_g, setgaps, {.i = -1 } },
-    { MODKEY|ControlMask, XK_g, setgaps, {.i = 0 } },
+    { MODKEY,               XK_g,			setgaps,        {.i = +1 } },
+    { MODKEY|ShiftMask,     XK_g,			setgaps,        {.i = -1 } },
+    { MODKEY|ControlMask,   XK_g,			setgaps,        {.i = 0 } },
 
     // Toggle floating
-    { MODKEY|ShiftMask, XK_f, togglefloating, {0} },
+    { MODKEY|ShiftMask,     XK_f,			togglefloating, {0} },
 
     // Toggle bar
-    { MODKEY|ShiftMask, XK_b, togglebar, {0} },
+    { MODKEY|ShiftMask,     XK_b,			togglebar,      {0} },
 
     // Move windows in current stack
-    { MODKEY|ShiftMask, XK_j, rotatestack, {.i = +1 } },
-    { MODKEY|ShiftMask, XK_k, rotatestack, {.i = -1 } },
+    { MODKEY|ShiftMask,     XK_j,			rotatestack,    {.i = +1 } },
+    { MODKEY|ShiftMask,     XK_k,			rotatestack,    {.i = -1 } },
 
     // Cycle layouts
-    { MODKEY, XK_Tab, cyclelayout, {.i = +1 } },
-    { MODKEY|ShiftMask, XK_Tab, cyclelayout,  {.i = -1 } },
+    { MODKEY,               XK_Tab,         cyclelayout,    {.i = +1 } },
+    { MODKEY|ShiftMask,     XK_Tab,         cyclelayout,    {.i = -1 } },
 
     // Focus next - prev monitor
-    { MODKEY, XK_period, focusmon, {.i = +1 } },
-    { MODKEY, XK_comma, focusmon, {.i = -1 } },
+    { MODKEY,               XK_period,      focusmon,       {.i = +1 } },
+    { MODKEY,               XK_comma,       focusmon,       {.i = -1 } },
 
     // Send window to next - prev monitor
-    { MODKEY|ShiftMask, XK_period, tagmon, {.i = +1 } },
-    { MODKEY|ShiftMask, XK_comma, tagmon, {.i = -1 } },
+    { MODKEY|ShiftMask,     XK_period,      tagmon,         {.i = +1 } },
+    { MODKEY|ShiftMask,     XK_comma,       tagmon,         {.i = -1 } },
 
     // Change color scheme
-    { MODKEY, XK_Left, schemeToggle, {0} },
-    { MODKEY, XK_Right, schemeCycle, {0} },
+    { MODKEY,               XK_Left,        schemeToggle,   {0} },
+    { MODKEY,               XK_Right,       schemeCycle,    {0} },
 
     // Kill window
-    { MODKEY, XK_w, killclient, {0} },
+    { MODKEY,               XK_w,			killclient,     {0} },
 
     // Restart dwm
-    { MODKEY|ControlMask, XK_r, quit, {1} },
+    { MODKEY|ControlMask,   XK_r,			quit,           {1} },
 
     // Quit dwm
-    { MODKEY|ControlMask, XK_q, quit, {0} },
+    { MODKEY|ControlMask,   XK_q,			quit,           {0} },
+
 
     // ---------------- Workspaces -----------------
 
@@ -183,86 +192,95 @@ static Key keys[] = {
     TAGKEYS(XK_8, 7)
     TAGKEYS(XK_9, 8)
     TAGKEYS(XK_0, 9)
+
+
     // ------------------- Apps --------------------
 
     // dmenu
-    { MODKEY|ShiftMask, XK_Return, spawn, {.v = dmenucmd } },
-    { MODKEY, XK_Menu, spawn, {.v = dmenucmd } },
+    { MODKEY|ShiftMask,     XK_Return,      spawn,      {.v = dmenucmd } },
+    { MODKEY,               XK_Menu,        spawn,      {.v = dmenucmd } },
 
     // rofi
-    { MODKEY, XK_m, spawn, SHCMD("rofi -show drun") },
+    { MODKEY,               XK_m,			spawn,      SHCMD("rofi -show drun") },
 
     // Window nav (rofi)
-    { MODKEY|ShiftMask, XK_m, spawn, SHCMD("rofi -show") },
+    { MODKEY|ShiftMask,     XK_m,			spawn,      SHCMD("rofi -show") },
 
     // Terminal emulators
-    { MODKEY, XK_Return, spawn, SHCMD("alacritty") },
-    { MODKEY|ControlMask, XK_Return, spawn, SHCMD("kitty") },
+    { MODKEY,               XK_Return,      spawn,      SHCMD("alacritty") },
+    { MODKEY|ControlMask,   XK_Return,      spawn,      SHCMD("kitty") },
 
     // File explorers
-    { MODKEY, XK_e, spawn, SHCMD("pcmanfm") },
-    { MODKEY|ShiftMask, XK_e, spawn, SHCMD("thunar") },
-    { MODKEY|ControlMask, XK_e, spawn, SHCMD("kitty -e ranger") },
+    { MODKEY,               XK_e,			spawn,      SHCMD("pcmanfm") },
+    { MODKEY|ShiftMask,     XK_e,			spawn,      SHCMD("thunar") },
+    { MODKEY|ControlMask,   XK_e,			spawn,      SHCMD("kitty -e ranger") },
 
     // Browsers
-    { MODKEY, XK_b, spawn, SHCMD("microsoft-edge-dev") },
-    { MODKEY, XK_f, spawn, SHCMD("firefox") },
-    { MODKEY|ControlMask, XK_b, spawn, SHCMD("brave") },
+    { MODKEY,               XK_b,			spawn,      SHCMD("microsoft-edge-dev") },
+    { MODKEY,               XK_f,			spawn,      SHCMD("firefox") },
+    { MODKEY|ControlMask,   XK_b,			spawn,      SHCMD("brave") },
 
     // Redshift
-    { MODKEY, XK_r, spawn, SHCMD("redshift -O 2400") },
-    { MODKEY|ShiftMask, XK_r, spawn, SHCMD("redshift -x") },
+    { MODKEY,               XK_r,			spawn,      SHCMD("redshift -O 2400") },
+    { MODKEY|ShiftMask,     XK_r,			spawn,      SHCMD("redshift -x") },
 
     // Screenshot
-    { MODKEY, XK_s, spawn, SHCMD("scrot -z '%Y-%m-%d-%H.%M.%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screenshots/'") },
-    { MODKEY|ShiftMask, XK_s, spawn, SHCMD("scre") },
+    { MODKEY,               XK_s,			spawn,      SHCMD("scrot -z '%Y-%m-%d-%H.%M.%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screenshots/'") },
+    { MODKEY|ShiftMask,     XK_s,			spawn,      SHCMD("scre") },
 
     // Music Players
-    { MODKEY, XK_p, spawn, SHCMD("spotify") },
-    { MODKEY|ShiftMask, XK_p, spawn, SHCMD("alacritty -e cmus") },
+    { MODKEY,               XK_p,			spawn,      SHCMD("spotify") },
 
     // Messengers
-    { MODKEY, XK_t, spawn, SHCMD("telegram-desktop") },
+    { MODKEY,               XK_t,			spawn,      SHCMD("telegram-desktop") },
 
     // Miscellaneous
-    { MODKEY, XK_d, spawn, SHCMD("droidcam") },
-    { MODKEY, XK_z, spawn, SHCMD("zoom") },
+    { MODKEY,               XK_d,			spawn,      SHCMD("droidcam") },
+    { MODKEY,               XK_z,			spawn,      SHCMD("zoom") },
 
 
     // ----------------- Hardware ------------------
 
     // Volume
-    {0, XF86XK_AudioLowerVolume, spawn, SHCMD("pamixer --decrease 2")},
-    {0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer --increase 2")},
-    {MODKEY, XK_minus, spawn, SHCMD("pamixer --decrease 2")},
-    {MODKEY, XK_plus, spawn, SHCMD("pamixer --increase 2")},
-    {MODKEY, XK_equal, spawn, SHCMD("pamixer --increase 2")},
-    {MODKEY|ShiftMask, XK_equal, spawn, SHCMD("pamixer --toggle-mute")},
-    {MODKEY|ShiftMask, XK_minus, spawn, SHCMD("pamixer --toggle-mute")},
+    {0,                     RaiseVolume,    spawn,      SHCMD("pamixer --increase 2")},
+    {0,                     LowerVolume,    spawn,      SHCMD("pamixer --decrease 2")},
+    {MODKEY,                XK_minus,       spawn,      SHCMD("pamixer --decrease 2")},
+    {MODKEY,                XK_plus,        spawn,      SHCMD("pamixer --increase 2")},
+    {MODKEY,                XK_equal,       spawn,      SHCMD("pamixer --increase 2")},
+    {MODKEY|ShiftMask,      XK_equal,       spawn,      SHCMD("pamixer --toggle-mute")},
+    {MODKEY|ShiftMask,      XK_minus,       spawn,      SHCMD("pamixer --toggle-mute")},
+    {0,                     AudioMute,      spawn,      SHCMD("pamixer --toggle-mute")},
 
     // Brightness
-    {0, XF86XK_MonBrightnessUp, spawn, SHCMD("brightnessctl set +10%")},
-    {0, XF86XK_MonBrightnessDown, spawn, SHCMD("brightnessctl set 10%-")},
+    {0,						BrightUp,		spawn,		SHCMD("brightnessctl set +10%")},
+    {0,						BrightDown,		spawn,		SHCMD("brightnessctl set 10%-")},
+
 
     // --------------------- MPD -------------------
 
+    // Clients
+    { MODKEY,               XK_n,			spawn,      SHCMD("alacritty -e ncmpcpp") },
+    { MODKEY|ShiftMask,     XK_n,			spawn,      SHCMD("cantata") },
+
     // Previus or next song
-    { MODKEY|ALTKEY, XK_j, mpdchange, {.i = -1} },
-	{ MODKEY|ALTKEY, XK_k, mpdchange, {.i = +1} },
+    { MODKEY|ALTKEY,		XK_j,			mpdchange,	{.i = -1} },
+	{ MODKEY|ALTKEY,        XK_k,     		mpdchange,	{.i = +1} },
 
     // Play or pause
-    { MODKEY|ALTKEY, XK_space, mpdcontrol, {0} },
+    { MODKEY|ALTKEY,		XK_space,		mpdcontrol,	{0} },
 
     // Volume
-    {ALTKEY, XF86XK_AudioLowerVolume, mpd_volume, {.i = -diff_volume } },
-    {ALTKEY, XF86XK_AudioRaiseVolume, mpd_volume, {.i = +diff_volume } },
-    {MODKEY|ALTKEY, XK_minus, mpd_volume, {.i = -diff_volume } },
-    {MODKEY|ALTKEY, XK_plus, mpd_volume, {.i = +diff_volume} },
-    {MODKEY|ALTKEY, XK_equal, mpd_volume, {.i = +diff_volume} },
+    {ALTKEY,				RaiseVolume,	mpd_volume,	{.i = +diff_volume } },
+    {ALTKEY,				LowerVolume,	mpd_volume,	{.i = -diff_volume } },
+    {MODKEY|ALTKEY,			XK_minus,		mpd_volume,	{.i = -diff_volume } },
+    {MODKEY|ALTKEY,			XK_plus,		mpd_volume,	{.i = +diff_volume } },
+    {MODKEY|ALTKEY,			XK_equal,		mpd_volume,	{.i = +diff_volume } },
+
 
     // ----------------- Keyboard layout ------------------
+
     // Change the xkbmap
-    {MODKEY, XK_space, spawn, SHCMD("xkbmap --rotate") },
+    {MODKEY,				XK_space,		spawn,		SHCMD("xkbmap --rotate") },
 };
 
 // click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin 
