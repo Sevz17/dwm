@@ -13,6 +13,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int extrabar			= 1;		/* 0 means no extra bar */
 static const int user_bh            = 0;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const unsigned int diff_volume = 2;      /* means the volume that MPD will increase or reduce, if 0 does nothing */
+static const double defaultopacity  = 0.75;
 
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
@@ -35,9 +36,9 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
++	/* class      instance    title       tags mask     isfloating	 opacity	monitor */
++	{ "Gimp",     NULL,       NULL,       0,            1,           1.0,		-1 },
++	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           1.0,		-1 },
 };
 
 /* layout(s) */
@@ -101,6 +102,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY|ShiftMask,				XK_KP_Add, changeopacity,  {.f = +0.1}},
+	{ MODKEY|ShiftMask,				XK_KP_Subtract, changeopacity,  {.f = -0.1}},
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },

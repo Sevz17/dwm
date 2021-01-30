@@ -24,6 +24,8 @@ static const int extrabar                   = 1;
 static const int user_bh                    = 0;
 // means the volume that MPD will increase or reduce, if 0 does nothing
 static const unsigned int diff_volume       = 2;
+// opacity for clients
+static const double defaultopacity          = 0.75;
 // ---------------------------------- Fonts ------------------------------------
 
 static const char *fonts[]    = { "UbuntuMono Nerd Font:size=14:weight=bold:antialias=true:autohint:true" };
@@ -66,15 +68,27 @@ static const char *colors[][3]          = {
 
 static const char *tags[] = { " ", "﬏ ", " ", " ", " ", " ", " ", " ", " ", " " };
 
+static const char PWA_WhatsApp[] = "crx__hnpfjngllnobngcgfapefoaidbinmjnm";
+
 static const Rule rules[] = {
     /* xprop(1):
      * WM_CLASS(STRING) = instance, class
      * WM_NAME(STRING) = title
      */
 
-    // class      instance    title       tags mask     isfloating   monitor 
-    { "Gimp",     NULL,       NULL,       0,            1,           -1 },
-    { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class                instance        title       tags mask       isfloating	 opacity	            monitor */
+	{ "firefox",            NULL,           NULL,       1,              0,           0.9,		            -1 },
+	{ "Microsoft-edge-dev", NULL,           NULL,       1,              0,           0.9,		            -1 },
+	{ "Brave-browser",      NULL,           NULL,       1,              0,           0.9,		            -1 },
+	{ "Microsoft-edge-dev", PWA_WhatsApp,   NULL,       1<<8,           0,           0.9,		            -1 },
+	{ "Alacritty",          NULL,           NULL,       1<<2,           0,           1.0,		            -1 },
+	{ "cantata",            NULL,           NULL,       1<<7,           0,           1.0,		            -1 },
+	{ "kitty",              NULL,           NULL,       1<<2,           0,           1.0,		            -1 },
+	{ "Spotify",            NULL,           NULL,       1<<7,           0,           defaultopacity,		-1 },
+	{ "zoom",               NULL,           NULL,       1<<6,           0,           defaultopacity,		-1 },
+	{ "Zathura",            NULL,           NULL,       1<<4,           0,           defaultopacity,		-1 },
+	{ "TelegramDesktop",    NULL,           NULL,       1<<8,           0,           defaultopacity,		-1 },
+	{ "Droidcam",           NULL,           NULL,       1<<9,           0,           defaultopacity,		-1 },
 };
 
 // ---------------------------------- Layouts ----------------------------------
@@ -172,6 +186,10 @@ static Key keys[] = {
     // Change color scheme
     { MODKEY,               XK_Left,        schemeToggle,   {0} },
     { MODKEY,               XK_Right,       schemeCycle,    {0} },
+
+    // Change opacity for clients
+	{ MODKEY|ShiftMask,		XK_KP_Add,      changeopacity,	{.f = +0.1}},
+	{ MODKEY|ShiftMask,		XK_KP_Subtract, changeopacity,  {.f = -0.1}},
 
     // Kill window
     { MODKEY,               XK_w,			killclient,     {0} },
