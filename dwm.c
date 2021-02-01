@@ -79,8 +79,8 @@
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
 enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
        NetSystemTray, NetSystemTrayOP, NetSystemTrayOrientation, NetSystemTrayOrientationHorz,
-       NetWMFullscreen, NetActiveWindow, NetWMWindowType,
-       NetWMWindowTypeDialog, NetClientList, NetLast, NetWMWindowsOpacity }; /* EWMH atoms */
+       NetWMWindowsOpacity, NetActiveWindow, NetWMWindowType,
+       NetWMWindowTypeDialog, NetClientList, NetLast, NetWMFullscreen }; /* EWMH atoms */
 enum { Manager, Xembed, XembedInfo, XLast }; /* Xembed atoms */
 enum { WMProtocols, WMDelete, WMState, WMTakeFocus, WMLast }; /* default atoms */
 enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,
@@ -904,7 +904,7 @@ drawbar(Monitor *m)
 	int x, w, tw = 0, stw = 0;
 	int boxs = drw->fonts->h / 9;
 	int boxw = drw->fonts->h / 6 + 2;
-	unsigned int i, occ = 0, urg = 0;
+	unsigned int occ = 0, urg = 0;
 	Client *c;
 
 	if(showsystray && m == systraytomon(m))
@@ -924,7 +924,7 @@ drawbar(Monitor *m)
 			urg |= c->tags;
 	}
 	x = 0;
-	for (i = 0; i < LENGTH(tags); i++) {
+	for (int i = 0; i < LENGTH(tags); i++) {
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
 		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
@@ -951,7 +951,7 @@ drawbar(Monitor *m)
 	}
 	drw_map(drw, m->barwin, 0, 0, m->ww - stw, bh);
 	drw_setscheme(drw, scheme[SchemeNorm]);
-	drw_text(drw, 0, 0, mons->ww, bh, 0, eb.text, 1);
+	drw_text(drw, 0, 0, mons->ww, bh, 0, eb.text, 0);
 	drw_map(drw, eb.win, 0, 0, mons->ww, bh);
 }
 
