@@ -33,35 +33,23 @@ static const char dmenufont[] = { "UbuntuMono Nerd Font:size=12:antialias=true:a
 
 // ---------------------------------- Colors -----------------------------------
 
-static const char window_border[]       = "#000000";
-static const char inactive[]            = "#4c566a";
-static const char active[]              = "#ffffff";
-
-static const char custom_bg[]           = "#0f0f0f";
-static const char custom_focus[]        = "#6000ff";
-
-static const char material_bg[]         = "#0f101a";
-static const char material_focus[]      = "#a151d3";
-
-static const char onedark_bg[]          = "#1e2127";
-static const char onedark_focus[]       = "#E06C75";
-
-static const char nord_bg[]             = "#2e3440";
-static const char nord_focus[]          = "#81a1c1";
+static const char col_black[]       = "#000000";
+static const char col_gray[]        = "#4c566a";
+static const char col_white[]       = "#ffffff";
+static const char col_purple[]      = "#6000ff";
 
 static const char *colors[][3]          = {
-    // fg        bg               border
-    { inactive,  custom_bg,       window_border },
-    { active,    custom_focus,    custom_focus  },
-
-    { inactive,  material_bg,     window_border },
-    { active,    material_focus,  material_focus  },
-
-    { inactive,  onedark_bg,      window_border },
-    { active,    onedark_focus,   onedark_focus  },
-    
-    { inactive,  nord_bg,         window_border },
-    { active,    nord_focus,      nord_focus  },
+//                          fg          bg              border
+// Statusbar right
+	[SchemeStatus]      = { col_white,  col_black,      col_black },
+ // Tagbar left selected
+    [SchemeTagsSel]     = { col_white,  col_purple,     col_purple },
+// Tagbar left unselected
+    [SchemeTagsNorm]    = { col_gray,   col_black,      col_black },
+// infobar middle selected
+    [SchemeInfoSel]     = { col_white,  col_purple,     col_purple },
+ // infobar middle unselected
+    [SchemeInfoNorm]    = { col_white,  col_black,      col_black },
 };
 
 // -------------------------------- Workspaces ---------------------------------
@@ -184,10 +172,6 @@ static Key keys[] = {
     // Send window to next - prev monitor
     { MODKEY|ShiftMask,     XK_period,      tagmon,         {.i = +1 } },
     { MODKEY|ShiftMask,     XK_comma,       tagmon,         {.i = -1 } },
-
-    // Change color scheme
-    { MODKEY,               XK_Left,        schemeToggle,   {0} },
-    { MODKEY,               XK_Right,       schemeCycle,    {0} },
 
     // Change opacity for clients
 	{ MODKEY|ShiftMask,		XK_KP_Add,      changeopacity,	{.f = +0.1}},
