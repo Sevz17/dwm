@@ -45,7 +45,7 @@ static const char *colors[][3]          = {
  // Tagbar left selected
     [SchemeTagsSel]     = { col_white,  col_purple,     col_purple },
 // Tagbar left unselected
-    [SchemeTagsNorm]    = { col_gray,   col_black,      col_black },
+    [SchemeTagsNorm]    = { col_white,   col_black,      col_black },
 // infobar middle selected
     [SchemeInfoSel]     = { col_white,  col_purple,     col_purple },
  // infobar middle unselected
