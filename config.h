@@ -28,7 +28,7 @@ static const unsigned int diff_volume       = 2;
 static const double defaultopacity          = 0.9;
 // ---------------------------------- Fonts ------------------------------------
 
-static const char *fonts[]    = { "UbuntuMono Nerd Font:size=14:weight=bold:antialias=true:autohint:true" };
+static const char *fonts[]    = { "UbuntuMono Nerd Font:size=14:antialias=true:autohint:true" };
 static const char dmenufont[] = { "UbuntuMono Nerd Font:size=12:antialias=true:autohint=true" };
 
 // ---------------------------------- Colors -----------------------------------
