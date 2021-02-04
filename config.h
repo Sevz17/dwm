@@ -126,10 +126,10 @@ static Key keys[] = {
     { MODKEY|ControlMask,   XK_g,			setgaps,        {.i = 0 } },
 
     // Toggle floating
-    { MODKEY|ShiftMask,     XK_f,			togglefloating, {0} },
+    { MODKEY|ControlMask,   XK_f,			togglefloating, {0} },
 
     // Toggle bar
-    { MODKEY|ShiftMask,     XK_b,			togglebar,      {0} },
+    { MODKEY|ControlMask,   XK_b,			togglebar,      {0} },
     { MODKEY|ALTKEY,        XK_b,           toggleextrabar, {0} },
 
     // Move windows in current stack
@@ -179,7 +179,7 @@ static Key keys[] = {
     // ------------------- Apps --------------------
 
     // dmenu
-    { MODKEY|ShiftMask,     XK_Return,      spawn,      {.v = dmenucmd } },
+    { MODKEY|ALTKEY,   XK_Return,      spawn,      {.v = dmenucmd } },
     { MODKEY,               XK_Menu,        spawn,      {.v = dmenucmd } },
 
     // rofi
@@ -190,17 +190,17 @@ static Key keys[] = {
 
     // Terminal emulators
     { MODKEY,               XK_Return,      spawn,      SHCMD("alacritty") },
-    { MODKEY|ControlMask,   XK_Return,      spawn,      SHCMD("kitty") },
+    { MODKEY|ShiftMask,     XK_Return,      spawn,      SHCMD("kitty") },
 
     // File explorers
     { MODKEY,               XK_e,			spawn,      SHCMD("pcmanfm") },
     { MODKEY|ShiftMask,     XK_e,			spawn,      SHCMD("thunar") },
-    { MODKEY|ControlMask,   XK_e,			spawn,      SHCMD("kitty -e ranger") },
+    { MODKEY|ALTKEY,        XK_e,			spawn,      SHCMD("kitty -e ranger") },
 
     // Browsers
     { MODKEY,               XK_b,			spawn,      SHCMD("microsoft-edge-dev") },
     { MODKEY,               XK_f,			spawn,      SHCMD("firefox") },
-    { MODKEY|ControlMask,   XK_b,			spawn,      SHCMD("brave") },
+    { MODKEY|ShiftMask,     XK_b,			spawn,      SHCMD("brave") },
 
     // Redshift
     { MODKEY,               XK_r,			spawn,      SHCMD("redshift -O 2400") },

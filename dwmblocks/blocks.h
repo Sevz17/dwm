@@ -11,7 +11,7 @@ static const Block blocks[] = {
 
     // bottom bar
 //   Icon        Command                             Update Interval     Update Signal
-    { "  ",     "neofetch --config ~/artist",        1,                  0 },
+    { "   ",   "neofetch --config ~/artist",        1,                  0 },
     { "",       "neofetch --config ~/song",          1,                  0 },
     { "",       "neofetch --config ~/album",         1,                  0 },
 };
