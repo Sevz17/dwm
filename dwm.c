@@ -1284,6 +1284,9 @@ manage(Window w, XWindowAttributes *wa)
 	c->h = c->oldh = wa->height;
 	c->oldbw = wa->border_width;
 
+	/* opacity */
+	c->opacity = defaultopacity;
+
 	updatetitle(c);
 	if (XGetTransientForHint(dpy, w, &trans) && (t = wintoclient(trans))) {
 		c->mon = t->mon;
