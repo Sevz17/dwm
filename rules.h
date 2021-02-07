@@ -35,6 +35,7 @@ static const Rule rules[] = {
 
 	// Workspace 
 	{ "Gimp-2.10",          NULL,           NULL,       1<<5,       0,           1.0,		        -1 },
+	{ "Gimp",          NULL,           NULL,       1<<5,       0,           1.0,		        -1 },
 
 
 	// Workspace 
