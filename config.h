@@ -124,6 +124,9 @@ static Key keys[] = {
     // Toggle floating
     { MODKEY|ControlMask,   XK_f,			togglefloating, {0} },
 
+    // Toggle always on top
+	{ MODKEY|ControlMask,   XK_t,           togglealwaysontop, {0} },
+
     // Toggle bar
     { MODKEY|ControlMask,   XK_b,			togglebar,      {0} },
     { MODKEY|ALTKEY,        XK_b,           toggleextrabar, {0} },
