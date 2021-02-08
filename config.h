@@ -4,6 +4,18 @@
 static const unsigned int borderpx          = 2;
 // snap pixel 
 static const unsigned int snap              = 32;
+// horiz inner gap between windows
+static const unsigned int gappih            = 6;
+// vert inner gap between windows
+static const unsigned int gappiv            = 6;
+// horiz outer gap between windows and screen edge
+static const unsigned int gappoh            = 6;
+// vert outer gap between windows and screen edge
+static const unsigned int gappov            = 6;
+// 0 means no outer gaps
+static unsigned int enableoutergaps         = 0;
+// 0 means no inner gaps
+static unsigned int enableinnergaps         = 1;
 // 0: sloppy systray follows selected monitor, >0: pin systray to monitor X 
 static const unsigned int systraypinning    = 0;
 // systray spacing 
@@ -157,6 +169,43 @@ static Key keys[] = {
     { MODKEY|ControlMask,   XK_q,			quit,           {0} },
 
 
+    // ------------------- Gaps --------------------
+    
+    // Increase - decrease all gaps
+	{ MODKEY,               XK_g,           incrgaps,       {.i = +1 } },
+	{ MODKEY|ShiftMask,     XK_g,           incrgaps,       {.i = -1 } },
+
+    // Restore - toggle gaps
+	{ MODKEY|ALTKEY,        XK_g,           defaultgaps,    {0} },
+	{ MODKEY|ControlMask,   XK_g,           togglegaps,     {0} },
+	{ MODKEY|ControlMask,   XK_o,           toggleoutergaps,{0} },
+	{ MODKEY|ControlMask,   XK_y,           toggleinnergaps,{0} },
+
+    // Increase - decrease inner gaps
+	{ ALTKEY|ShiftMask,     XK_k,           incrigaps,      {.i = +1 } },
+	{ ALTKEY|ShiftMask,     XK_j,           incrigaps,      {.i = -1 } },
+
+    // Increase - decrease inner vertical gaps
+	{ MODKEY,               XK_y,           incrihgaps,     {.i = +1 } },
+	{ MODKEY|ShiftMask,     XK_y,           incrihgaps,     {.i = -1 } },
+
+    // Increase - decrease inner horizontal gaps
+	{ MODKEY,               XK_o,           incrivgaps,     {.i = +1 } },
+	{ MODKEY|ShiftMask,     XK_o,           incrivgaps,     {.i = -1 } },
+
+    // Increase - decrease outer gaps
+	{ ALTKEY|ShiftMask,     XK_h,           incrogaps,      {.i = +1 } },
+	{ ALTKEY|ShiftMask,     XK_l,           incrogaps,      {.i = -1 } },
+
+    // Increase - decrease outer vertical gaps
+	{ ALTKEY,               XK_y,           incrohgaps,     {.i = +1 } },
+	{ ALTKEY|ShiftMask,     XK_y,           incrohgaps,     {.i = -1 } },
+
+    // Increase - decrease outer horizontal gaps
+	{ ALTKEY,               XK_o,           incrovgaps,     {.i = +1 } },
+	{ ALTKEY|ShiftMask,     XK_o,           incrovgaps,     {.i = -1 } },
+
+
     // ---------------- Workspaces -----------------
 
     TAGKEYS(XK_1, 0)
@@ -174,7 +223,7 @@ static Key keys[] = {
     // ------------------- Apps --------------------
 
     // dmenu
-    { MODKEY|ALTKEY,   XK_Return,      spawn,      {.v = dmenucmd } },
+    { MODKEY|ALTKEY,        XK_Return,      spawn,      {.v = dmenucmd } },
     { MODKEY,               XK_Menu,        spawn,      {.v = dmenucmd } },
 
     // rofi
