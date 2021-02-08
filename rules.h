@@ -1,3 +1,5 @@
+/* See LICENSE file for copyright and license details. */
+
 // ------------------------------ Rules -----------------------------------
 static const char PWA_WhatsApp[] = "crx__hnpfjngllnobngcgfapefoaidbinmjnm";
 
