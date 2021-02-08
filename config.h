@@ -2,8 +2,6 @@
 
 // border pixel of windows
 static const unsigned int borderpx          = 2;
-// gaps between windows
-static const unsigned int gappx             = 6;
 // snap pixel 
 static const unsigned int snap              = 32;
 // 0: sloppy systray follows selected monitor, >0: pin systray to monitor X 
@@ -118,11 +116,6 @@ static Key keys[] = {
     { MODKEY|ShiftMask,     XK_i,			incnmaster,     {.i = -1 } },
     { MODKEY|ShiftMask,     XK_h,			setmfact,       {.f = -0.05} },
     { MODKEY|ShiftMask,     XK_l,			setmfact,       {.f = +0.05} },
-
-    // Change gaps
-    { MODKEY,               XK_g,			setgaps,        {.i = +1 } },
-    { MODKEY|ShiftMask,     XK_g,			setgaps,        {.i = -1 } },
-    { MODKEY|ControlMask,   XK_g,			setgaps,        {.i = 0 } },
 
     // Toggle floating
     { MODKEY|ControlMask,   XK_f,			togglefloating, {0} },
