@@ -9,6 +9,11 @@ static const Rule rules[] = {
 
 	/* class                instance        title       tags mask   isfloating	 opacity	        monitor */
 
+	// No workspace
+	{ "feh",				NULL,           NULL,       0,          0,           1.0,		        -1 },
+	{ "MEGAsync",			NULL,           NULL,       0,          1,           0.9,		        -1 },
+
+
 	// Workspace 
 	{ "firefox",            NULL,           NULL,       1,          0,           0.9,		        -1 },
 	{ "Microsoft-edge-dev", NULL,           NULL,       1,          0,           0.9,		        -1 },
@@ -31,11 +36,12 @@ static const Rule rules[] = {
 	// Workspace 
 	{ "Zathura",            NULL,           NULL,       1<<4,       0,           defaultopacity,    -1 },
 	{ NULL,					"libreoffice",  NULL,       1<<4,       0,           1.0,		        -1 },
+	{ NULL,					NULL,		    "LibreOffice",1<<4,     0,           defaultopacity,	-1 },
 
 
 	// Workspace 
 	{ "Gimp-2.10",          NULL,           NULL,       1<<5,       0,           1.0,		        -1 },
-	{ "Gimp",          NULL,           NULL,       1<<5,       0,           1.0,		        -1 },
+	{ "Gimp",				NULL,           NULL,       1<<5,       0,           1.0,		        -1 },
 
 
 	// Workspace 
@@ -45,7 +51,7 @@ static const Rule rules[] = {
 
 	// Workspace 
 	{ "Spotify",            NULL,           NULL,       1<<7,       0,           defaultopacity,    -1 },
-	{ NULL,					NULL,           "Spotify",  1<<7,       0,           defaultopacity,    -1 },
+	{ NULL,					NULL,           "spotify",  1<<7,       0,           defaultopacity,    -1 },
 	{ "cantata",            NULL,           NULL,       1<<7,       0,           defaultopacity,	-1 },
 
 
@@ -57,4 +63,6 @@ static const Rule rules[] = {
 	// Workspace 
 	{ "Droidcam",           NULL,           NULL,       1<<9,       0,           defaultopacity,    -1 },
 	{ "Xephyr",             NULL,           NULL,       1<<9,       1,           1.0,		        -1 },
+		/* 0ad */
+	{ "pyrogenesis",		NULL,           NULL,       1<<9,       1,           1.0,		        -1 },
 };
