@@ -2330,7 +2330,7 @@ tile(Monitor *m)
 		oe = 0; // outer gaps disabled
 
 	if (enableinnergaps == 0)
-		ie = 0; // outer gaps disabled
+		ie = 0; // inner gaps disabled
 
 	if (n == 1) {
 		bw = 0;
