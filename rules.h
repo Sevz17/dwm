@@ -24,7 +24,7 @@ static const Rule rules[] = {
 
 	// Workspace ﬏
 	{ "Java",				NULL,           "Eclipse",	1<<1,       1,           1.0,	            -1 },
-	{ "Eclipse",			NULL,           NULL,       1<<1,       1,           1.0,	            -1 },
+	{ "Eclipse",			NULL,           NULL,       1<<1,       1,           defaultopacity,	-1 },
 
 
 	// Workspace 
@@ -33,6 +33,7 @@ static const Rule rules[] = {
 
 
 	// Workspace 
+	{ "VirtualBox Manager",	NULL,           NULL,       1<<3,       1,           defaultopacity,	-1 },
 
 
 	// Workspace 
@@ -53,12 +54,12 @@ static const Rule rules[] = {
 
 	// Workspace 
 	{ "Spotify",            NULL,           NULL,       1<<7,       0,           defaultopacity,    -1 },
-	{ NULL,					NULL,           "spotify",  1<<7,       0,           defaultopacity,    -1 },
+	{ NULL,					NULL,           "Spotify",  1<<7,       0,           defaultopacity,    -1 },
 	{ "cantata",            NULL,           NULL,       1<<7,       0,           defaultopacity,	-1 },
 
 
 	// Workspace 
-	{ "Microsoft-edge-dev", PWA_WhatsApp,   NULL,       1<<8,       0,           0.9,               -1 },
+	{ "Microsoft-edge-dev", PWA_WhatsApp,   NULL,       1<<8,       0,           defaultopacity,	-1 },
 	{ "TelegramDesktop",    NULL,           NULL,       1<<8,       0,           defaultopacity,    -1 },
 
 
@@ -67,4 +68,5 @@ static const Rule rules[] = {
 	{ "Xephyr",             NULL,           NULL,       1<<9,       1,           1.0,		        -1 },
 		/* 0ad */
 	{ "pyrogenesis",		NULL,           NULL,       1<<9,       1,           1.0,		        -1 },
+	{ "VirtualBox Machine",	NULL,           NULL,       1<<9,       1,           1.0,		        -1 },
 };
