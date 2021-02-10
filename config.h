@@ -188,24 +188,24 @@ static Key keys[] = {
 	{ ALTKEY|ShiftMask,     XK_j,           incrigaps,      {.i = -1 } },
 
     // Increase - decrease inner vertical gaps
-	{ MODKEY,               XK_y,           incrihgaps,     {.i = +1 } },
-	{ MODKEY|ShiftMask,     XK_y,           incrihgaps,     {.i = -1 } },
+	{ MODKEY,               XK_y,           incrivgaps,     {.i = +1 } },
+	{ MODKEY|ShiftMask,     XK_y,           incrivgaps,     {.i = -1 } },
 
     // Increase - decrease inner horizontal gaps
-	{ MODKEY,               XK_o,           incrivgaps,     {.i = +1 } },
-	{ MODKEY|ShiftMask,     XK_o,           incrivgaps,     {.i = -1 } },
+	{ MODKEY,               XK_o,           incrihgaps,     {.i = +1 } },
+	{ MODKEY|ShiftMask,     XK_o,           incrihgaps,     {.i = -1 } },
 
     // Increase - decrease outer gaps
 	{ ALTKEY|ShiftMask,     XK_h,           incrogaps,      {.i = +1 } },
 	{ ALTKEY|ShiftMask,     XK_l,           incrogaps,      {.i = -1 } },
 
     // Increase - decrease outer vertical gaps
-	{ ALTKEY,               XK_y,           incrohgaps,     {.i = +1 } },
-	{ ALTKEY|ShiftMask,     XK_y,           incrohgaps,     {.i = -1 } },
+	{ ALTKEY,               XK_y,           incrovgaps,     {.i = +1 } },
+	{ ALTKEY|ShiftMask,     XK_y,           incrovgaps,     {.i = -1 } },
 
     // Increase - decrease outer horizontal gaps
-	{ ALTKEY,               XK_o,           incrovgaps,     {.i = +1 } },
-	{ ALTKEY|ShiftMask,     XK_o,           incrovgaps,     {.i = -1 } },
+	{ ALTKEY,               XK_o,           incrohgaps,     {.i = +1 } },
+	{ ALTKEY|ShiftMask,     XK_o,           incrohgaps,     {.i = -1 } },
 
 
     // ---------------- Workspaces -----------------
