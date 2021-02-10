@@ -80,9 +80,11 @@ static const int resizehints    = 1;
 
 static const Layout layouts[] = {
     // symbol   arrange function
-    { "[T]",     tile }, // first entry is default 
+    { "[T]",    tile }, // first entry is default
     { "[F]",    NULL }, // no layout function means floating behavior 
     { "[M]",    monocle },
+    { "[D]",    deck },
+    { NULL,     NULL },
 };
 
 // -------------------------------- Keybindings --------------------------------
