@@ -886,28 +886,46 @@ destroynotify(XEvent *e)
 }
 
 void
-deck(Monitor *m) {
-	unsigned int i, n, h, mw, my;
+deck(Monitor *m)
+{
+	unsigned int i, n, h, r, oe = enableoutergaps, ie = enableinnergaps, mw, my, ty, bw;
 	Client *c;
 
 	for(n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
 	if(n == 0)
 		return;
 
+	if (enableoutergaps == 0)
+		oe = 0; // outer gaps disabled
+
+	if (enableinnergaps == 0)
+		ie = 0; // inner gaps disabled
+
+	if (n == 1) {
+		bw = 0;
+		oe = 0; // outer gaps disabled
+	} else {
+		bw = borderpx;
+	}
+
 	if(n > m->nmaster) {
 		mw = m->nmaster ? m->ww * m->mfact : 0;
 		snprintf(m->ltsymbol, sizeof m->ltsymbol, "D[%d]", n - m->nmaster);
-	}
-	else
-		mw = m->ww;
-	for(i = my = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
-		if(i < m->nmaster) {
-			h = (m->wh - my) / (MIN(n, m->nmaster) - i);
-			resize(c, m->wx, m->wy + my, mw - (2*c->bw), h - (2*c->bw), 0, False);
-			my += HEIGHT(c);
+	} else
+		mw = m->ww - 2*m->gappoh*oe + m->gappih*ie;
+
+	for (i = 0, my = ty = m->gappov*oe, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
+		if (i < m->nmaster) {
+			r = MIN(n, m->nmaster) - i;
+			h = (m->wh - my - m->gappov*oe - m->gappiv*ie * (r - 1)) / r;
+			resize(c, m->wx + m->gappoh*oe, m->wy + my, mw - (2*c->bw) - m->gappih*ie - m->gappoh*oe, h - (2*c->bw), bw, 0);
+			if (my + HEIGHT(c) + m->gappiv*ie < m->wh)
+				my += HEIGHT(c) + m->gappiv*ie;
+		} else {
+			r = n - i;
+			h = (m->wh - ty) - m->gappov*oe;
+			resize(c, m->wx + mw + m->gappih*ie, m->wy + ty, m->ww - mw - (2*c->bw) - m->gappih*ie - m->gappoh*oe, h - (2*c->bw), bw, 0);
 		}
-		else
-			resize(c, m->wx + mw, m->wy, m->ww - mw - (2*c->bw), m->wh - (2*c->bw), 0, False);
 }
 
 void
