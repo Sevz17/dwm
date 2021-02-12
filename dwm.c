@@ -915,13 +915,13 @@ deck(Monitor *m)
 		if (i < m->nmaster) {
 			r = MIN(n, m->nmaster) - i;
 			h = (m->wh - my - m->gappov*oe - m->gappiv*ie * (r - 1)) / r;
-			resize(c, m->wx + m->gappoh*oe, m->wy + my, mw - (2*bw) - m->gappih*ie - m->gappoh*oe, h - (2*bw), bw, 0);
+			resize(c, m->wx + m->gappoh*oe, m->wy + my, mw - (2*bw) - (m->gappih*ie/2) - m->gappoh*oe, h - (2*bw), bw, 0);
 			if (my + HEIGHT(c) + m->gappiv*ie < m->wh)
 				my += HEIGHT(c) + m->gappiv*ie;
 		} else {
 			r = n - i;
 			h = (m->wh - ty) - m->gappov*oe;
-			resize(c, m->wx + mw + m->gappih*ie, m->wy + ty, m->ww - mw - (2*c->bw) - m->gappih*ie - m->gappoh*oe, h - (2*c->bw), bw, 0);
+			resize(c, m->wx + mw + (m->gappih*ie/2), m->wy + ty, m->ww - mw - (2*bw) - (m->gappih*ie/2) - m->gappoh*oe, h - (2*bw), bw, 0);
 		}
 }
 
@@ -2391,13 +2391,13 @@ tile(Monitor *m)
 		if (i < m->nmaster) {
 			r = MIN(n, m->nmaster) - i;
 			h = (m->wh - my - m->gappov*oe - m->gappiv*ie * (r - 1)) / r;
-			resize(c, m->wx + m->gappoh*oe, m->wy + my, mw - (2*bw) - m->gappih*ie - m->gappoh*oe, h - (2*bw), bw, 0);
+			resize(c, m->wx + m->gappoh*oe, m->wy + my, mw - (2*bw) - (m->gappih*ie/2) - m->gappoh*oe, h - (2*bw), bw, 0);
 			if (my + HEIGHT(c) + m->gappiv*ie < m->wh)
 				my += HEIGHT(c) + m->gappiv*ie;
 		} else {
 			r = n - i;
 			h = (m->wh - ty - m->gappov*oe - m->gappiv*ie * (r - 1)) / r;
-			resize(c, m->wx + mw + m->gappih*ie, m->wy + ty, m->ww - mw - (2*c->bw) - m->gappoh*oe - m->gappih*ie, h - (2*c->bw), bw, 0);
+			resize(c, m->wx + mw + (m->gappih*ie/2), m->wy + ty, m->ww - mw - (2*bw) - m->gappoh*oe - (m->gappih*ie/2), h - (2*bw), bw, 0);
 			if (ty + HEIGHT(c) + m->gappiv*ie < m->wh)
 				ty += HEIGHT(c) + m->gappiv*ie;
 		}
