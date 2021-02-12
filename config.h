@@ -26,10 +26,12 @@ static const int systraypinningfailfirst    = 1;
 static const int showsystray                = 1;
 // 0 means no bar 
 static const int showbar                    = 1;
+// 0 means no extra bar
+static const int showextrabar               = 1;
 // 0 means bottom bar 
 static const int topbar                     = 1;
-// 0 means no extra bar
-static const int extrabar                   = 1;
+// separator between status bars
+static const char statussep                 = ';';
 // 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height
 static const int user_bh                    = 0;
 // means the volume that MPD will increase or reduce, if 0 does nothing
@@ -139,7 +141,7 @@ static Key keys[] = {
 
     // Toggle bar
     { MODKEY|ControlMask,   XK_b,			togglebar,      {0} },
-    { MODKEY|ALTKEY,        XK_b,           toggleextrabar, {0} },
+    { MODKEY|ALTKEY,        XK_b,			toggleextrabar, {0} },
 
     // Move windows in current stack
     { MODKEY|ShiftMask,     XK_j,			rotatestack,    {.i = +1 } },
