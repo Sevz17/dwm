@@ -250,7 +250,8 @@ static Key keys[] = {
     { MODKEY|ShiftMask,     XK_m,			spawn,      SHCMD("rofi -show") },
 
     // Terminal emulators
-    { MODKEY,               XK_Return,      spawn,      SHCMD("alacritty") },
+    { MODKEY,               XK_Return,      spawn,      {.v = termcmd } },
+    { ALTKEY,               XK_Return,      spawn,      SHCMD("st") },
     { MODKEY|ShiftMask,     XK_Return,      spawn,      SHCMD("kitty") },
 
     // File explorers
