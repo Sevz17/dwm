@@ -104,11 +104,6 @@ static const Layout layouts[] = {
 
 #define MODKEY      Mod4Mask
 #define ALTKEY      Mod1Mask
-#define LowerVolume XF86XK_AudioLowerVolume
-#define RaiseVolume XF86XK_AudioRaiseVolume
-#define AudioMute   XF86XK_AudioMute
-#define BrightUp    XF86XK_MonBrightnessUp
-#define BrightDown  XF86XK_MonBrightnessDown
 
 #define TAGKEYS(KEY,TAG) \
     { MODKEY,                       KEY,  view,       {.ui = 1 << TAG} }, \
@@ -128,217 +123,207 @@ static const char *dmenucmd[]   = {
     NULL
 };
 
-#include <X11/XF86keysym.h>
 #include "mpdcontrol.c"
 static Key keys[] = {
 
     // ------------------ Windows ------------------
 
     // Switch between windows
-    { MODKEY,               XK_j,			focusstack,     {.i = +1 } },
-    { MODKEY,               XK_k,			focusstack,     {.i = -1 } },
+    { MODKEY,               44 /* j */,     focusstack,     {.i = +1 } },
+    { MODKEY,               45 /* k */,     focusstack,     {.i = -1 } },
 
     // Change window sizes
-    { MODKEY,               XK_i,			incnmaster,     {.i = +1 } },
-    { MODKEY|ShiftMask,     XK_i,			incnmaster,     {.i = -1 } },
-    { MODKEY|ShiftMask,     XK_h,			setmfact,       {.f = -0.05} },
-    { MODKEY|ShiftMask,     XK_l,			setmfact,       {.f = +0.05} },
+    { MODKEY,               31 /* i */,     incnmaster,     {.i = +1 } },
+    { MODKEY|ShiftMask,     31 /* i */,     incnmaster,     {.i = -1 } },
+    { MODKEY|ShiftMask,     43 /* h */,		setmfact,       {.f = -0.05} },
+    { MODKEY|ShiftMask,     46 /* l */,		setmfact,       {.f = +0.05} },
 
     // Toggle floating
-    { MODKEY|ControlMask,   XK_f,			togglefloating, {0} },
+    { MODKEY|ControlMask,   41 /* f */,		togglefloating, {0} },
 
     // Toggle always on top
-	{ MODKEY|ControlMask,   XK_t,           togglealwaysontop, {0} },
+	{ MODKEY|ControlMask,   28 /* t */,     togglealwaysontop, {0} },
 
     // Toggle bar
-    { MODKEY|ControlMask,   XK_b,			togglebar,      {0} },
-    { MODKEY|ALTKEY,        XK_b,			toggleextrabar, {0} },
+    { MODKEY|ControlMask,   56 /* b */,		togglebar,      {0} },
+    { MODKEY|ALTKEY,        56 /* b */,		toggleextrabar, {0} },
 
     // Move windows in current stack
-    { MODKEY|ShiftMask,     XK_j,			rotatestack,    {.i = +1 } },
-    { MODKEY|ShiftMask,     XK_k,			rotatestack,    {.i = -1 } },
+    { MODKEY|ShiftMask,     44 /* j */,		rotatestack,    {.i = +1 } },
+    { MODKEY|ShiftMask,     45 /* k */,		rotatestack,    {.i = -1 } },
 
     // Cycle layouts
-    { MODKEY,               XK_Tab,         cyclelayout,    {.i = +1 } },
-    { MODKEY|ShiftMask,     XK_Tab,         cyclelayout,    {.i = -1 } },
+    { MODKEY,               23 /* tab */,   cyclelayout,    {.i = +1 } },
+    { MODKEY|ShiftMask,     23 /* tab */,   cyclelayout,    {.i = -1 } },
 
     // Focus next - prev monitor
-    { MODKEY,               XK_period,      focusmon,       {.i = +1 } },
-    { MODKEY,               XK_comma,       focusmon,       {.i = -1 } },
+    { MODKEY,               60 /* period */,focusmon,       {.i = +1 } },
+    { MODKEY,               59 /* comma */, focusmon,       {.i = -1 } },
 
     // Send window to next - prev monitor
-    { MODKEY|ShiftMask,     XK_period,      tagmon,         {.i = +1 } },
-    { MODKEY|ShiftMask,     XK_comma,       tagmon,         {.i = -1 } },
+    { MODKEY|ShiftMask,     60 /* period */,tagmon,         {.i = +1 } },
+    { MODKEY|ShiftMask,     59 /* comma */, tagmon,         {.i = -1 } },
 
     // Change opacity for clients
-	{ MODKEY|ShiftMask,		XK_KP_Add,      changeopacity,	{.f = +0.1}},
-	{ MODKEY|ShiftMask,		XK_KP_Subtract, changeopacity,  {.f = -0.1}},
+	{ MODKEY|ShiftMask,		86 /* Add */,   changeopacity,	{.f = +0.1}},
+	{ MODKEY|ShiftMask,		82 /*substract*/, changeopacity,{.f = -0.1}},
 
     // Kill window
-    { MODKEY,               XK_w,			killclient,     {0} },
+    { MODKEY,               25 /* w */,		killclient,     {0} },
 
     // Restart dwm
-    { MODKEY|ControlMask,   XK_r,			quit,           {1} },
+    { MODKEY|ControlMask,   27 /* r */,		quit,           {1} },
 
     // Quit dwm
-    { MODKEY|ControlMask,   XK_q,			quit,           {0} },
+    { MODKEY|ControlMask,   24 /* q */,		quit,           {0} },
 
 
     // ------------------- Gaps --------------------
     
     // Increase - decrease all gaps
-	{ MODKEY,               XK_g,           incrgaps,       {.i = +1 } },
-	{ MODKEY|ShiftMask,     XK_g,           incrgaps,       {.i = -1 } },
+	{ MODKEY,               42 /* g */,     incrgaps,       {.i = +1 } },
+	{ MODKEY|ShiftMask,     42 /* g */,     incrgaps,       {.i = -1 } },
 
     // Restore - toggle gaps
-	{ MODKEY|ALTKEY,        XK_g,           defaultgaps,    {0} },
-	{ MODKEY|ControlMask,   XK_g,           togglegaps,     {0} },
-	{ MODKEY|ControlMask,   XK_o,           toggleoutergaps,{0} },
-	{ MODKEY|ControlMask,   XK_y,           toggleinnergaps,{0} },
+	{ MODKEY|ALTKEY,        42 /* g */,     defaultgaps,    {0} },
+	{ MODKEY|ControlMask,   42 /* g */,     togglegaps,     {0} },
+	{ MODKEY|ControlMask,   32 /* o */,     toggleoutergaps,{0} },
+	{ MODKEY|ControlMask,   29 /* y */,     toggleinnergaps,{0} },
 
     // Increase - decrease inner gaps
-	{ ALTKEY|ShiftMask,     XK_k,           incrigaps,      {.i = +1 } },
-	{ ALTKEY|ShiftMask,     XK_j,           incrigaps,      {.i = -1 } },
+	{ ALTKEY|ShiftMask,     45 /* k */,     incrigaps,      {.i = +1 } },
+	{ ALTKEY|ShiftMask,     44 /* j */,     incrigaps,      {.i = -1 } },
 
     // Increase - decrease inner vertical gaps
-	{ MODKEY,               XK_y,           incrivgaps,     {.i = +1 } },
-	{ MODKEY|ShiftMask,     XK_y,           incrivgaps,     {.i = -1 } },
+	{ MODKEY,               29 /* y */,     incrivgaps,     {.i = +1 } },
+	{ MODKEY|ShiftMask,     29 /* y */,     incrivgaps,     {.i = -1 } },
 
     // Increase - decrease inner horizontal gaps
-	{ MODKEY,               XK_o,           incrihgaps,     {.i = +1 } },
-	{ MODKEY|ShiftMask,     XK_o,           incrihgaps,     {.i = -1 } },
+	{ MODKEY,               32 /* o */,     incrihgaps,     {.i = +1 } },
+	{ MODKEY|ShiftMask,     32 /* o */,     incrihgaps,     {.i = -1 } },
 
     // Increase - decrease outer gaps
-	{ ALTKEY|ShiftMask,     XK_h,           incrogaps,      {.i = +1 } },
-	{ ALTKEY|ShiftMask,     XK_l,           incrogaps,      {.i = -1 } },
+	{ ALTKEY|ShiftMask,     43 /* h */,     incrogaps,      {.i = +1 } },
+	{ ALTKEY|ShiftMask,     46 /* l */,     incrogaps,      {.i = -1 } },
 
     // Increase - decrease outer vertical gaps
-	{ ALTKEY,               XK_y,           incrovgaps,     {.i = +1 } },
-	{ ALTKEY|ShiftMask,     XK_y,           incrovgaps,     {.i = -1 } },
+	{ ALTKEY,               29 /* y */,     incrovgaps,     {.i = +1 } },
+	{ ALTKEY|ShiftMask,     29 /* y */,     incrovgaps,     {.i = -1 } },
 
     // Increase - decrease outer horizontal gaps
-	{ ALTKEY,               XK_o,           incrohgaps,     {.i = +1 } },
-	{ ALTKEY|ShiftMask,     XK_o,           incrohgaps,     {.i = -1 } },
+	{ ALTKEY,               32 /* o */,     incrohgaps,     {.i = +1 } },
+	{ ALTKEY|ShiftMask,     32 /* o */,     incrohgaps,     {.i = -1 } },
 
 
     // ---------------- Workspaces -----------------
 
-    TAGKEYS(XK_1, 0)
-    TAGKEYS(XK_2, 1)
-    TAGKEYS(XK_3, 2)
-    TAGKEYS(XK_4, 3)
-    TAGKEYS(XK_5, 4)
-    TAGKEYS(XK_6, 5)
-    TAGKEYS(XK_7, 6)
-    TAGKEYS(XK_8, 7)
-    TAGKEYS(XK_9, 8)
-    TAGKEYS(XK_0, 9)
+    TAGKEYS(10 /* 1 */, 0)
+    TAGKEYS(11 /* 2 */, 1)
+    TAGKEYS(12 /* 3 */, 2)
+    TAGKEYS(13 /* 4 */, 3)
+    TAGKEYS(14 /* 5 */, 4)
+    TAGKEYS(15 /* 6 */, 5)
+    TAGKEYS(16 /* 7 */, 6)
+    TAGKEYS(17 /* 8 */, 7)
+    TAGKEYS(18 /* 9 */, 8)
+    TAGKEYS(19 /* 0 */, 9)
 
     // Switch between the last label and the current
-    { MODKEY,               XK_slash,       view,       {.ui = 0 } },
+    { MODKEY,               61 /* slash */,     view,       {.ui = 0 } },
 
     // ------------------- Apps --------------------
 
     // dmenu
-    { MODKEY|ALTKEY,        XK_Return,      spawn,      {.v = dmenucmd } },
-    { MODKEY,               XK_Menu,        spawn,      {.v = dmenucmd } },
+    { MODKEY|ALTKEY,        36 /* enter */,     spawn,      {.v = dmenucmd } },
+    { MODKEY,               135 /* menu */,     spawn,      {.v = dmenucmd } },
 
     // rofi
-    { MODKEY,               XK_m,			spawn,      SHCMD("rofi -show drun") },
+    { MODKEY,               58 /* m */,         spawn,      SHCMD("rofi -show drun") },
 
     // Window nav (rofi)
-    { MODKEY|ShiftMask,     XK_m,			spawn,      SHCMD("rofi -show") },
+    { MODKEY|ShiftMask,     58 /* m */,         spawn,      SHCMD("rofi -show") },
 
     // Terminal emulators
-    { MODKEY,               XK_Return,      spawn,      {.v = termcmd } },
-    { ALTKEY,               XK_Return,      spawn,      SHCMD("st") },
-    { MODKEY|ShiftMask,     XK_Return,      spawn,      SHCMD("kitty") },
+    { MODKEY,               36 /* enter */,     spawn,      {.v = termcmd } },
+    { ALTKEY,               36 /* enter */,     spawn,      SHCMD("st") },
+    { MODKEY|ShiftMask,     36 /* enter */,     spawn,      SHCMD("kitty") },
 
     // File explorers
-    { MODKEY,               XK_e,			spawn,      SHCMD("pcmanfm") },
-    { MODKEY|ShiftMask,     XK_e,			spawn,      SHCMD("thunar") },
-    { MODKEY|ALTKEY,        XK_e,			spawn,      SHCMD("kitty -e ranger") },
+    { MODKEY,               26 /* e */,         spawn,      SHCMD("pcmanfm") },
+    { MODKEY|ShiftMask,     26 /* e */,			spawn,      SHCMD("thunar") },
+    { MODKEY|ALTKEY,        26 /* e */,			spawn,      SHCMD("kitty -e ranger") },
 
     // Browsers
-    { MODKEY,               XK_b,			spawn,      SHCMD("microsoft-edge-dev") },
-    { MODKEY,               XK_f,			spawn,      SHCMD("firefox") },
-    { MODKEY|ShiftMask,     XK_b,			spawn,      SHCMD("brave") },
+    { MODKEY,               56 /* b */,			spawn,      SHCMD("microsoft-edge-dev") },
+    { MODKEY,               41 /* f */,			spawn,      SHCMD("firefox") },
+    { MODKEY|ShiftMask,     56 /* b */,			spawn,      SHCMD("brave") },
 
     // Redshift
-    { MODKEY,               XK_r,			spawn,      SHCMD("redshift -O 2400") },
-    { MODKEY|ShiftMask,     XK_r,			spawn,      SHCMD("redshift -x") },
+    { MODKEY,               27 /* r */,			spawn,      SHCMD("redshift -O 2400") },
+    { MODKEY|ShiftMask,     27 /* r */,			spawn,      SHCMD("redshift -x") },
 
     // Screenshot
-    { MODKEY,               XK_s,			spawn,      SHCMD("scrot -z '%Y-%m-%d-%H.%M.%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screenshots/'") },
-    { MODKEY|ShiftMask,     XK_s,			spawn,      SHCMD("scre") },
+    { MODKEY,               39 /* s */,			spawn,      SHCMD("scrot -z '%Y-%m-%d-%H.%M.%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screenshots/'") },
+    { MODKEY|ShiftMask,     39 /* s */,			spawn,      SHCMD("scre") },
 
     // Music Players
-    { MODKEY,               XK_p,			spawn,      SHCMD("spotify") },
+    { MODKEY,               33 /* p */,         spawn,      SHCMD("spotify") },
 
     // Messengers
-    { MODKEY,               XK_t,			spawn,      SHCMD("telegram-desktop") },
+    { MODKEY,               28 /* t */,			spawn,      SHCMD("telegram-desktop") },
 
     // Miscellaneous
-    { MODKEY,               XK_d,			spawn,      SHCMD("droidcam") },
-    { MODKEY,               XK_z,			spawn,      SHCMD("zoom") },
+    { MODKEY,               40 /* d */,			spawn,      SHCMD("droidcam") },
+    { MODKEY,               52 /* z */,			spawn,      SHCMD("zoom") },
 
 
     // ----------------- Hardware ------------------
 
     // Volume
-    {0,                     RaiseVolume,    spawn,      SHCMD("pamixer --increase 2")},
-    {0,                     LowerVolume,    spawn,      SHCMD("pamixer --decrease 2")},
-    {MODKEY,                XK_minus,       spawn,      SHCMD("pamixer --decrease 2")},
-    {MODKEY,                XK_plus,        spawn,      SHCMD("pamixer --increase 2")},
-    {MODKEY,                XK_equal,       spawn,      SHCMD("pamixer --increase 2")},
-    {MODKEY|ShiftMask,      XK_equal,       spawn,      SHCMD("pamixer --toggle-mute")},
-    {MODKEY|ShiftMask,      XK_minus,       spawn,      SHCMD("pamixer --toggle-mute")},
-    {0,                     AudioMute,      spawn,      SHCMD("pamixer --toggle-mute")},
-
-    // Brightness
-    {0,						BrightUp,		spawn,		SHCMD("brightnessctl set +10%")},
-    {0,						BrightDown,		spawn,		SHCMD("brightnessctl set 10%-")},
+    {MODKEY,                20 /* minus */,     spawn,      SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -2%")},
+    {MODKEY,                21 /* plus */,      spawn,      SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +2%")},
+    {MODKEY,                22 /* backspc */,   spawn,      SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle")},
 
 
     // --------------------- MPD -------------------
 
     // Clients
-    { MODKEY,               XK_n,			spawn,      SHCMD("alacritty -e ncmpcpp") },
-    { MODKEY|ShiftMask,     XK_n,			spawn,      SHCMD("cantata") },
+    { MODKEY,               57 /* n */,			spawn,      SHCMD("alacritty -e ncmpcpp") },
+    { MODKEY|ShiftMask,     57 /* n */,			spawn,      SHCMD("cantata") },
 
     // Previus or next song
-    { MODKEY|ALTKEY,		XK_j,			mpdchange,	{.i = -1} },
-	{ MODKEY|ALTKEY,        XK_k,     		mpdchange,	{.i = +1} },
+    { MODKEY|ALTKEY,		44 /* j */,			mpdchange,	{.i = -1} },
+	{ MODKEY|ALTKEY,        45 /* k */,     	mpdchange,	{.i = +1} },
 
     // Play or pause
-    { MODKEY|ALTKEY,		XK_space,		mpdcontrol,	{0} },
+    { MODKEY|ALTKEY,		65 /* space */,		mpdcontrol,	{0} },
 
     // Volume
-    {ALTKEY,				RaiseVolume,	mpd_volume,	{.i = +diff_volume } },
-    {ALTKEY,				LowerVolume,	mpd_volume,	{.i = -diff_volume } },
-    {MODKEY|ALTKEY,			XK_minus,		mpd_volume,	{.i = -diff_volume } },
-    {MODKEY|ALTKEY,			XK_plus,		mpd_volume,	{.i = +diff_volume } },
-    {MODKEY|ALTKEY,			XK_equal,		mpd_volume,	{.i = +diff_volume } },
+    {MODKEY|ALTKEY,			20 /* minus */,		mpd_volume,	{.i = -diff_volume } },
+    {MODKEY|ALTKEY,			21 /* plus */,		mpd_volume,	{.i = +diff_volume } },
 
 
     // ----------------- Keyboard layout ------------------
 
     // Change the xkbmap
-    {MODKEY,				XK_space,		spawn,		SHCMD("xkbmap --rotate") },
+    {MODKEY,				65 /* space */,		spawn,		SHCMD("xkbmap --rotate") },
 };
 
 // click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin 
 static Button buttons[] = {
-    // click            event mask    button       function         argument 
-    { ClkLtSymbol,      0,            Button1,     setlayout,       {0} },
-    { ClkLtSymbol,      0,            Button3,     setlayout,       {.v = &layouts[2]} },
-    { ClkWinTitle,      0,            Button2,     zoom,            {0} },
-    { ClkStatusText,    0,            Button2,     spawn,           {.v = termcmd } },
-    { ClkClientWin,     MODKEY,       Button1,     movemouse,       {0} },
-    { ClkClientWin,     MODKEY,       Button2,     togglefloating,  {0} },
-    { ClkClientWin,     MODKEY,       Button3,     resizemouse,     {0} },
-    { ClkTagBar,        0,            Button1,     view,            {0} },
-    { ClkTagBar,        0,            Button3,     toggleview,      {0} },
-    { ClkTagBar,        MODKEY,       Button1,     tag,             {0} },
-    { ClkTagBar,        MODKEY,       Button3,     toggletag,       {0} },
+    // click            event mask  button       function         argument 
+    { ClkLtSymbol,      0,          Button1,    setlayout,      {0} },
+    { ClkLtSymbol,      0,          Button4,    cyclelayout,    {.i = +1 } },
+    { ClkLtSymbol,      0,          Button5,    cyclelayout,    {.i = +1 } },
+    { ClkLtSymbol,      0,          Button3,    setlayout,      {.v = &layouts[2]} },
+    { ClkWinTitle,      0,          Button4,    zoom,           {0} },
+    { ClkWinTitle,      0,          Button5,    zoom,           {0} },
+    { ClkWinTitle,      MODKEY,     Button1,    spawn,          {.v = termcmd } },
+    { ClkClientWin,     MODKEY,     Button1,    movemouse,      {0} },
+    { ClkClientWin,     MODKEY,     Button2,    togglefloating, {0} },
+    { ClkClientWin,     MODKEY,     Button3,    resizemouse,    {0} },
+    { ClkTagBar,        0,          Button1,    view,           {0} },
+    { ClkTagBar,        0,          Button3,    toggleview,     {0} },
+    { ClkTagBar,        MODKEY,     Button1,    tag,            {0} },
+    { ClkTagBar,        MODKEY,     Button3,    toggletag,      {0} },
 };
