@@ -34,6 +34,8 @@ static const int topbar                     = 1;
 static const char statussep                 = ';';
 // 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height
 static const int user_bh                    = 0;
+// 0 means no tag active on start
+static const int startontag                 = 0;
 // means the volume that MPD will increase or reduce, if 0 does nothing
 static const unsigned int diff_volume       = 2;
 // opacity for clients
@@ -223,6 +225,7 @@ static Key keys[] = {
     TAGKEYS(XK_9, 8)
     TAGKEYS(XK_0, 9)
 
+    { MODKEY,               XK_slash,       view,       {.ui = 0 } },
 
     // ------------------- Apps --------------------
 

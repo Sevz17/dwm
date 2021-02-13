@@ -15,7 +15,8 @@ static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int showextrabar		= 1;		/* 0 means no extra bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-+static const char statussep		= ';';      /* separator between status bars */
+static const int startontag         = 1;        /* 0 means no tag active on start */
+static const char statussep		= ';';      /* separator between status bars */
 static const int user_bh            = 0;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const unsigned int diff_volume = 2;      /* means the volume that MPD will increase or reduce, if 0 does nothing */
 static const double defaultopacity  = 0.75;
