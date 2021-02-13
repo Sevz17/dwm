@@ -1,3 +1,6 @@
 [submodule "dmenu"]
 	path = dmenu
 	url = https://github.com/Sevz17/dmenu.git
+[submodule "slstatus"]
+	path = slstatus
+	url = https://github.com/Sevz17/slstatus
