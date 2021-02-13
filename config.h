@@ -73,6 +73,15 @@ static const char *colors[][3]          = {
 
 static const char *tags[] = { " ", "﬏ ", " ", " ", " ", " ", " ", " ", " ", " " };
 
+// -------------------------------- Auto start ---------------------------------
+
+static const char *const autostart[] = {
+    "slstatus", NULL,
+    "zsh", "-c", "while true; do; echo \"`checkupdates | wc -l `/`yay -Qu | wc -l`\" \
+        > ~/.config/.updates; sleep 60; done", NULL,
+	NULL /* terminate */
+};
+
 // ---------------------------------- Layouts ----------------------------------
 
 // factor of master area size [0.05..0.95]
@@ -225,6 +234,7 @@ static Key keys[] = {
     TAGKEYS(XK_9, 8)
     TAGKEYS(XK_0, 9)
 
+    // Switch between the last label and the current
     { MODKEY,               XK_slash,       view,       {.ui = 0 } },
 
     // ------------------- Apps --------------------
