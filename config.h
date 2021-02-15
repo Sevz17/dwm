@@ -93,8 +93,10 @@ static const int nmaster        = 1;
 // 1 means respect size hints in tiled resizals
 static const int resizehints    = 1;
 
+#include "tatami.c"
 static const Layout layouts[] = {
     // symbol   arrange function
+	{ "|+|",    tatami },
     { "[T]",    tile }, // first entry is default
     { "[F]",    NULL }, // no layout function means floating behavior 
     { "[M]",    monocle },
