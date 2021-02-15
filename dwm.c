@@ -929,6 +929,7 @@ deck(Monitor *m)
 	if (n == 1) {
 		bw = 0;
 		oe = 0; // outer gaps disabled
+		ie = 0; // inner gaps disabled
 	} else {
 		bw = borderpx;
 	}
@@ -2351,6 +2352,7 @@ tile(Monitor *m)
 	if (n == 1) {
 		bw = 0;
 		oe = 0; // outer gaps disabled
+		ie = 0; // inner gaps disabled
 	} else {
 		bw = borderpx;
 	}
