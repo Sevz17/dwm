@@ -921,18 +921,15 @@ deck(Monitor *m)
 		return;
 
 	if (enableoutergaps == 0)
-		oe = 0; // outer gaps disabled
+		oe = 0; /* outer gaps disabled */
 
 	if (enableinnergaps == 0)
-		ie = 0; // inner gaps disabled
+		ie = 0; /* inner gaps disabled */
 
-	if (n == 1) {
-		bw = 0;
-		oe = 0; // outer gaps disabled
-		ie = 0; // inner gaps disabled
-	} else {
+	if (n == 1)
+		bw = oe = ie = 0; /* border width and gaps disabled */
+	else
 		bw = borderpx;
-	}
 
 	if(n > m->nmaster) {
 		mw = m->nmaster ? m->ww * m->mfact : 0;
@@ -996,7 +993,7 @@ void
 drawbar(Monitor *m)
 {
 	int x, w, tw = 0, stw = 0;
-	int boxs = drw->fonts->h / 9;
+	int i, boxs = drw->fonts->h / 9;
 	int boxw = drw->fonts->h / 6 + 2;
 	unsigned int occ = 0, urg = 0;
 	Client *c;
@@ -1018,14 +1015,13 @@ drawbar(Monitor *m)
 			urg |= c->tags;
 	}
 	x = 0;
-	for (int i = 0; i < LENGTH(tags); i++) {
+	for (i = 0; i < LENGTH(tags); i++) {
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeTagsSel : SchemeTagsNorm]);
-		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
 		if (occ & 1 << i && !(m->tagset[m->seltags] & 1 << i)) {
 			drw_setscheme(drw, scheme[SchemeTagsActive]);
-			drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
 		}
+		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
 		x += w;
 	}
 	w = blw = TEXTW(m->ltsymbol);
@@ -2344,18 +2340,15 @@ tile(Monitor *m)
 		return;
 
 	if (enableoutergaps == 0)
-		oe = 0; // outer gaps disabled
+		oe = 0; /* outer gaps disabled */
 
 	if (enableinnergaps == 0)
-		ie = 0; // inner gaps disabled
+		ie = 0; /* inner gaps disabled */
 
-	if (n == 1) {
-		bw = 0;
-		oe = 0; // outer gaps disabled
-		ie = 0; // inner gaps disabled
-	} else {
+	if (n == 1)
+		bw = oe = ie = 0; /* border width and gaps disabled */
+	else
 		bw = borderpx;
-	}
 
 	if (n > m->nmaster)
 		mw = m->nmaster ? m->ww * m->mfact : 0;
