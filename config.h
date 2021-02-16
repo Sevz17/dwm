@@ -79,8 +79,15 @@ static const char *tags[] = { " ", "﬏ ", " ", " ", " ", " ", "�
 
 static const char *const autostart[] = {
     "slstatus", NULL,
-    "zsh", "-c", "while true; do; echo \"`checkupdates | wc -l `/`yay -Qu | wc -l`\" \
-        > ~/.config/.updates; sleep 60; done", NULL,
+    "zsh", "-c",
+        "while true; \
+        do;\
+        sleep 60;\
+          if [[ ! -f /var/lib/pacman/db.lck ]]; then;\
+            echo \"`checkupdates | wc -l `/`yay -Qu | wc -l`\" \
+            > ~/.config/.updates;\
+          fi;\
+        done", NULL,
 	NULL /* terminate */
 };
 
@@ -307,10 +314,30 @@ static Key keys[] = {
     {MODKEY|ALTKEY,			21 /* plus */,		mpd_volume,	{.i = +diff_volume } },
 
 
+    // ------ ----- Other music players ------------
+
+    // Previus or next song
+    { MODKEY,               67 /* F1 */,        spawn,      SHCMD("playerctl -p spotify,vlc,%any previous") },
+    { MODKEY,               69 /* F3 */,        spawn,      SHCMD("playerctl -p spotify,vlc,%any next") },
+
+    // Play or pause
+    { MODKEY,               68 /* F2 */,        spawn,      SHCMD("playerctl -p spotify,vlc,%any play-pause")	 },
+
+    // Volume (all except mpd and spotify)
+    { MODKEY|ShiftMask,     20 /* minus */,     spawn,      SHCMD("playerctl -p vlc,%any -i spotify,mpd volume 0.02-") },
+    { MODKEY|ShiftMask,     21 /* plus */,      spawn,      SHCMD("playerctl -p vlc,%any -i spotify,mpd volume 0.02+") },
+
+    // Volume (only for spotify)
+    { ALTKEY,               20 /* minus */,     spawn,      SHCMD("vol_spotify -2%") },
+    { ALTKEY,               21 /* plus */,      spawn,      SHCMD("vol_spotify +2%") },
+    { ALTKEY,               22 /* backspc */,   spawn,      SHCMD("vol_spotify toggle-mute")},
+
+
     // ----------------- Keyboard layout ------------------
 
     // Change the xkbmap
     {MODKEY,				65 /* space */,		spawn,		SHCMD("xkbmap --rotate") },
+    {MODKEY|ShiftMask,		65 /* space */,		spawn,		SHCMD("xkbmap --rotate-variant") },
 };
 
 // click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin 
