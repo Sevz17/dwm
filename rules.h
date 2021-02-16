@@ -50,11 +50,12 @@ static const Rule rules[] = {
 	// Workspace 
 	{ "zoom",               NULL,           NULL,       1<<6,       0,           defaultopacity,    -1 },
 	{ "zoom",               NULL,           "Chat",     1<<6,       1,           defaultopacity,    -1 },
+	{ "vlc",				NULL,           NULL,       1<<6,       0,           defaultopacity,    -1 },
 
 
 	// Workspace 
 	{ "Spotify",            NULL,           NULL,       1<<7,       0,           defaultopacity,    -1 },
-	{ NULL,					NULL,           "Spotify",  1<<7,       0,           defaultopacity,    -1 },
+	{ "vlc",				NULL,           NULL,       1<<7,       0,           defaultopacity,    -1 },
 	{ "cantata",            NULL,           NULL,       1<<7,       0,           defaultopacity,	-1 },
 
 
