@@ -4,6 +4,8 @@
 static const unsigned int borderpx          = 2;
 // snap pixel 
 static const unsigned int snap              = 32;
+// 1 means swallow floating windows by default
+static const int swallowfloating            = 1;
 // horiz inner gap between windows
 static const unsigned int gappih            = 6;
 // vert inner gap between windows
@@ -98,7 +100,7 @@ static const float mfact        = 0.50;
 // number of clients in master area
 static const int nmaster        = 1;
 // 1 means respect size hints in tiled resizals
-static const int resizehints    = 1;
+static const int resizehints    = 0;
 
 #include "tatami.c"
 static const Layout layouts[] = {
