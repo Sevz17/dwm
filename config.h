@@ -86,7 +86,7 @@ static const char *const autostart[] = {
         do;\
         sleep 60;\
           if [[ ! -f /var/lib/pacman/db.lck ]]; then;\
-            echo \"`checkupdates | wc -l `/`yay -Qu | wc -l`\" \
+            echo \"`checkupdates | wc -l `/`yay -Qua | wc -l`\" \
             > ~/.config/.updates;\
           fi;\
         done", NULL,
