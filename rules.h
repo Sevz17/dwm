@@ -14,6 +14,7 @@ static const Rule rules[] = {
 	// No workspace
 	{ "MEGAsync",			NULL,           NULL,       0,          1,          0.9,		0,			0,      	-1 },
 	{ NULL,					NULL,		"Event Tester", 0,			0,		defaultopacity,	0,			1,			-1 }, /* xev */
+	{ "feh",				NULL,           NULL,       0,			0,           1.0,		0,			0,      	-1 },
 
 
 	// Workspace 
@@ -34,9 +35,9 @@ static const Rule rules[] = {
 
 
 	// Workspace 
-	{ "VirtualBox Manager",	NULL,           NULL,       1<<3,       1,		defaultopacity,	0,			0,			-1 },
-	{ "Pavucontrol",		NULL,           NULL,       1<<3,       1,		defaultopacity,	0,			0,			-1 },
-	{ "Arandr",				NULL,           NULL,       1<<3,       1,		defaultopacity,	0,			0,			-1 },
+	{ "VirtualBox Manager",	NULL,           NULL,       1<<3,       0,		defaultopacity,	0,			0,			-1 },
+	{ "Pavucontrol",		NULL,           NULL,       1<<3,       0,		defaultopacity,	0,			0,			-1 },
+	{ "Arandr",				NULL,           NULL,       1<<3,       0,		defaultopacity,	0,			0,			-1 },
 
 
 	// Workspace 
