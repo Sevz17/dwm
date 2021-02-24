@@ -276,8 +276,8 @@ static Key keys[] = {
     { MODKEY|ShiftMask,     27 /* r */,			spawn,      SHCMD("redshift -x") },
 
     // Screenshot
-    { MODKEY,               39 /* s */,			spawn,      SHCMD("scrot -z '%Y-%m-%d-%H.%M.%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screenshots/'") },
-    { MODKEY|ShiftMask,     39 /* s */,			spawn,      SHCMD("scre") },
+    { MODKEY,               39 /* s */,			spawn,      SHCMD("sleep 0.1; scrot -z '%Y-%m-%d-%H.%M.%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screenshots/'") },
+    { MODKEY|ShiftMask,     39 /* s */,			spawn,      SHCMD("sleep 0.1; scre") },
 
     // Music Players
     { MODKEY,               33 /* p */,         spawn,      SHCMD("spotify") },
