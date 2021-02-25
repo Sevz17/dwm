@@ -165,6 +165,10 @@ static Key keys[] = {
     { MODKEY|ShiftMask,     44 /* j */,		rotatestack,    {.i = +1 } },
     { MODKEY|ShiftMask,     45 /* k */,		rotatestack,    {.i = -1 } },
 
+    // Move windows
+    { MODKEY|ControlMask,   44 /* j */,		movestack,      {.i = +1 } },
+    { MODKEY|ControlMask,   45 /* k */,		movestack,      {.i = -1 } },
+
     // Cycle layouts
     { MODKEY,               23 /* tab */,   cyclelayout,    {.i = +1 } },
     { MODKEY|ShiftMask,     23 /* tab */,   cyclelayout,    {.i = -1 } },
