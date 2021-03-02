@@ -50,25 +50,27 @@ static const char dmenufont[] = { "UbuntuMono Nerd Font:size=12:antialias=true:a
 // ---------------------------------- Colors -----------------------------------
 
 static const char col_black[]       = "#000000";
-static const char col_gray[]        = "#78869a";
+static const char col_gray[]        = "#aaaaaa";
 static const char col_white[]       = "#ffffff";
 static const char col_purple[]      = "#6000ff";
 static const char col_red[]         = "#ff0000";
 
 static const char *colors[][3]          = {
 //                          fg          bg              border
-// Statusbar right
-	[SchemeStatus]      = { col_white,  col_black,      col_black },
 // Tagbar left selected
-    [SchemeTagsSel]     = { col_white,  col_purple,     col_purple },
-// Tagbar left used by clients
-    [SchemeTagsActive]  = { col_white,  col_black,      col_purple },
+    [SchemeTagsSel]     = { col_gray,  col_purple,     col_purple },
 // Tagbar left unselected
     [SchemeTagsNorm]    = { col_gray,   col_black,      col_black },
+// Tagbar left used by clients and unselected
+    [SchemeTagsNormAct]  = { col_white,  col_black,      col_purple },
+// Tagbar left used by clients and selected
+    [SchemeTagsSelAct]  = { col_white,  col_purple,      col_purple },
 // infobar middle selected
     [SchemeInfoSel]     = { col_white,  col_purple,     col_purple },
 // infobar middle unselected
     [SchemeInfoNorm]    = { col_white,  col_black,      col_black },
+// Statusbar right and extrabar
+	[SchemeStatus]      = { col_white,  col_black,      col_black },
 // border urgent
 	[SchemeUrg]         = { col_white,  col_black,      col_red },
 };
